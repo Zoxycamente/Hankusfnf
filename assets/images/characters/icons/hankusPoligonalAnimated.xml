@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hankusPoligonalAnimated.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="icon0000" x="0" y="0" width="111" height="131" frameX="0" frameY="0" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0001" x="0" y="0" width="111" height="131" frameX="0" frameY="0" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0002" x="111" y="0" width="100" height="124" frameX="-12" frameY="-4" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0003" x="111" y="0" width="100" height="124" frameX="-12" frameY="-4" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0004" x="211" y="0" width="108" height="114" frameX="-19" frameY="-9" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0005" x="211" y="0" width="108" height="114" frameX="-19" frameY="-9" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0006" x="319" y="0" width="118" height="114" frameX="-18" frameY="-9" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0007" x="319" y="0" width="118" height="114" frameX="-18" frameY="-9" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0008" x="319" y="0" width="118" height="114" frameX="-18" frameY="-9" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0009" x="319" y="0" width="118" height="114" frameX="-18" frameY="-9" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0010" x="319" y="0" width="118" height="114" frameX="-18" frameY="-9" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0011" x="319" y="0" width="118" height="114" frameX="-18" frameY="-9" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0012" x="0" y="131" width="122" height="123" frameX="-19" frameY="-4" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0013" x="0" y="131" width="122" height="123" frameX="-19" frameY="-4" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0014" x="122" y="131" width="113" height="117" frameX="-20" frameY="-7" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0015" x="122" y="131" width="113" height="117" frameX="-20" frameY="-7" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0016" x="235" y="131" width="99" height="114" frameX="-25" frameY="-9" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0017" x="235" y="131" width="99" height="114" frameX="-25" frameY="-9" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0018" x="334" y="131" width="99" height="122" frameX="-18" frameY="-5" frameWidth="141" frameHeight="131"/>
+	<SubTexture name="icon0019" x="334" y="131" width="99" height="122" frameX="-18" frameY="-5" frameWidth="141" frameHeight="131"/>
+</TextureAtlas>

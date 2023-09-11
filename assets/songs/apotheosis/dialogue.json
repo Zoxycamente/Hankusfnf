@@ -1,0 +1,41 @@
+{
+    "box": "speech_bubble_talking",
+    "boxState": "normal",
+    "dialogue": [
+        {
+            "portrait": "hankus",
+            "expression": "normal",
+            "text": "eu sou o hankus"
+        },
+        {
+            "portrait": "bf",
+            "expression": "normal",
+            "text": "fodase"
+        },
+        {
+            "portrait": "hankus",
+            "expression": "normal",
+            "text": "meu mano vou te matar"
+        },
+        {
+            "portrait": "bf",
+            "expression": "scared",
+            "text": "NAOOOOOOOOOOOOOOOO\nPQQQQQQQQ",
+            "boxState": "yell",
+            "scale": 1.4
+        },
+        {
+            "portrait": "bf",
+            "expression": "scared",
+            "text": "VAMO BATALHA DE RAP\n SE EU PERDE TU ME MATA",
+            "boxState": "yell",
+            "scale": 1.4
+        },
+        {
+            "portrait": "hankus",
+            "expression": "normal",
+            "text": "ok\nmas se tu perder\nEU COMO A TUA MÃE",
+            "boxState": "normal"
+        }
+    ]
+}

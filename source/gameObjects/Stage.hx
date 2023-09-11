@@ -1,0 +1,417 @@
+package gameObjects;
+
+import flixel.FlxBasic;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.FlxObject;
+import flixel.FlxSprite;
+import flixel.FlxState;
+import flixel.addons.effects.FlxTrail;
+import flixel.addons.effects.chainable.FlxWaveEffect;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.group.FlxSpriteGroup;
+import flixel.math.FlxPoint;
+import flixel.system.FlxSound;
+import flixel.text.FlxText;
+import flixel.tweens.FlxTween;
+import gameObjects.background.*;
+import meta.CoolUtil;
+import meta.data.Conductor;
+import meta.data.dependency.FNFSprite;
+import meta.state.PlayState;
+
+using StringTools;
+
+/**
+   i hate code fnf stages i hate i fuckin hate that shit so much holyshitloisi'mcumming
+**/
+class Stage extends FlxTypedGroup<FlxBasic>
+{
+	var halloweenBG:FNFSprite;
+	var phillyCityLights:FlxTypedGroup<FNFSprite>;
+	var phillyTrain:FNFSprite;
+	var trainSound:FlxSound;
+
+	public var limo:FNFSprite;
+
+	public var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
+
+	var fastCar:FNFSprite;
+
+	var upperBoppers:FNFSprite;
+	var bottomBoppers:FNFSprite;
+	var santa:FNFSprite;
+
+	var bgGirls:BackgroundGirls;
+
+	public var curStage:String;
+
+	var daPixelZoom = PlayState.daPixelZoom;
+
+	public var foreground:FlxTypedGroup<FlxBasic>;
+
+	public function new(curStage)
+	{
+		super();
+		this.curStage = curStage;
+
+		/// get hardcoded stage type if chart is fnf style
+		if (PlayState.determinedChartType == "FNF")
+		{
+			// this is because I want to avoid editing the fnf chart type
+			// custom stage stuffs will come with forever charts
+			if (PlayState.SONG.curStage == null) {
+			switch (CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()))
+			{
+				case 'apotheosis':
+				    curStage = 'apotheosis';
+				case 'purple-alert':
+				    curStage = 'purple-alert';
+				case 'sussy-legacy':
+					curStage = 'sussy-legacy';
+				case 'dead-memories':
+					curStage = 'dead-memories';
+				default:
+					curStage = 'stage';
+			}} else {
+				curStage = PlayState.SONG.curStage;
+			}
+
+			PlayState.curStage = curStage;
+		}
+
+		// to apply to foreground use foreground.add(); instead of add();
+		foreground = new FlxTypedGroup<FlxBasic>();
+
+		//
+		switch (curStage)
+		{
+			case 'apotheosis':
+				PlayState.defaultCamZoom = 0.8;
+				curStage = 'apotheosis';
+
+                var bg:FNFSprite = new FNFSprite(-184, -274).loadGraphic(Paths.image('backgrounds/' + curStage + '/fundo'));
+				bg.antialiasing = true;
+				bg.active = false;
+				add(bg);
+
+				var caixas:FNFSprite = new FNFSprite(418, 60).loadGraphic(Paths.image('backgrounds/' + curStage + '/somsonador'));
+				caixas.antialiasing = true;
+				caixas.active = false;
+				add(caixas);
+
+				var zumbis:FNFSprite = new FNFSprite(820, 868).loadGraphic(Paths.image('backgrounds/' + curStage + '/zumbis'));
+				zumbis.antialiasing = true;
+                zumbis.active = false;
+				add(zumbis);
+
+				var zumbi:FNFSprite = new FNFSprite(-24, 812).loadGraphic(Paths.image('backgrounds/' + curStage + '/zumbi'));
+				zumbi.antialiasing = true;
+                zumbis.active = false;
+				add(zumbi);
+
+				var lampada:FNFSprite = new FNFSprite(80, -700).loadGraphic(Paths.image('backgrounds/' + curStage + '/lampada'));
+				lampada.antialiasing = true;
+				lampada.scrollFactor.set(0.9, 0.9);
+				lampada.active = true;
+				foreground.add(lampada);
+			case 'dead-memories':
+				PlayState.defaultCamZoom = 0.7;
+				curStage = 'dead-memories';
+
+                var bg:FNFSprite = new FNFSprite(-1871, -720).loadGraphic(Paths.image('backgrounds/' + curStage + '/fundo'));
+				bg.antialiasing = true;
+				bg.active = false;
+				add(bg);
+
+				var caixa1:FNFSprite = new FNFSprite(1051, 1819).loadGraphic(Paths.image('backgrounds/' + curStage + '/somsonador'));
+				caixa1.antialiasing = true;
+				caixa1.active = false;
+				add(caixa1);
+
+				var caixa2:FNFSprite = new FNFSprite(1764, -461).loadGraphic(Paths.image('backgrounds/' + curStage + '/somsonador'));
+				caixa2.antialiasing = true;
+				caixa2.active = false;
+				add(caixa2);
+
+				var zumbis:FNFSprite = new FNFSprite(-445, 42).loadGraphic(Paths.image('backgrounds/' + curStage + '/zumbissz'));
+				zumbis.antialiasing = true;
+                zumbis.active = false;
+				add(zumbis);
+
+				var lampada:FNFSprite = new FNFSprite(80, -480).loadGraphic(Paths.image('backgrounds/' + curStage + '/luz'));
+				lampada.antialiasing = true;
+				lampada.scrollFactor.set(0.9, 0.9);
+				lampada.active = true;
+				foreground.add(lampada);
+
+				var coisafrente:FNFSprite = new FNFSprite(7, 518).loadGraphic(Paths.image('backgrounds/' + curStage + '/coisa da frente'));
+				coisafrente.antialiasing = true;
+				coisafrente.active = true;
+				foreground.add(coisafrente);
+			case 'purple-alert':
+				PlayState.defaultCamZoom = 0.6;
+				curStage = 'purple-alert';
+
+                var bg:FNFSprite = new FNFSprite(-550, -300).loadGraphic(Paths.image('backgrounds/' + curStage + '/fundo'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.1, 0.1);
+				bg.active = false;
+				add(bg);
+
+				var corpo:FNFSprite = new FNFSprite(-550, -150).loadGraphic(Paths.image('backgrounds/' + curStage + '/a'));
+				corpo.antialiasing = true;
+				corpo.active = true;
+				add(corpo);
+			case 'sussy-legacy':
+				PlayState.defaultCamZoom = 0.8;
+				curStage = 'sussy-legacy';
+	
+		     	var bg:FNFSprite = new FNFSprite(-396, -137).loadGraphic(Paths.image('backgrounds/' + curStage + '/bg'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.9, 0.9);
+				bg.active = false;
+				add(bg);
+	
+				var frente:FNFSprite = new FNFSprite(-110, 563).loadGraphic(Paths.image('backgrounds/' + curStage + '/frente'));
+				frente.antialiasing = true;
+				frente.active = true;
+				frente.x += -275;
+				frente.y += -75;
+				add(frente);
+				/*
+				case 'poligonal-suspicion':
+					PlayState.defaultCamZoom = 0.8;
+					curStage = 'suspeita-poligonal';
+		
+					var swagBG:FNFSprite = new FNFSprite(-600, -200).loadGraphic(Paths.image('backgrounds/' + curStage + '/hi')); //GOLDEN APPLE É PLACEHOLDER K
+					swagBG.scale.set(1.75, 1.75);
+					var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
+				    testshader.waveAmplitude = 0.1;
+				    testshader.waveFrequency = 1;
+				    testshader.waveSpeed = 2;
+				    swagBG.shader = testshader.shader;
+				    add(swagBG);
+				*/
+			default:
+				PlayState.defaultCamZoom = 0.9;
+				curStage = 'stage';
+				var bg:FNFSprite = new FNFSprite(-600, -200).loadGraphic(Paths.image('backgrounds/' + curStage + '/stageback'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.9, 0.9);
+				bg.active = false;
+				add(bg);
+
+				var stageFront:FNFSprite = new FNFSprite(-650, 600).loadGraphic(Paths.image('backgrounds/' + curStage + '/stagefront'));
+				stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+				stageFront.updateHitbox();
+				stageFront.antialiasing = true;
+				stageFront.active = false;
+				add(stageFront);
+
+				var stageCurtains:FNFSprite = new FNFSprite(-500, -300).loadGraphic(Paths.image('backgrounds/' + curStage + '/stagecurtains'));
+				stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
+				stageCurtains.updateHitbox();
+				stageCurtains.antialiasing = true;
+				stageCurtains.active = false;
+				foreground.add(stageCurtains);
+		}
+	}
+
+	// return the girlfriend's type
+	public function returnGFtype(curStage)
+	{
+		var gfVersion:String = 'gf';
+		if (PlayState.SONG.curStage == null) {
+		switch (curStage)
+		{
+			case 'apotheosis' | 'dead-memories' | 'sussy-legacy' | 'purple-alert':
+				gfVersion = 'nothinglol';
+		}}
+		else
+		gfVersion = PlayState.SONG.gfVersion;
+
+		return gfVersion;
+	}
+
+	// get the dad's position
+	public function dadPosition(curStage, boyfriend:Character, dad:Character, gf:Character, camPos:FlxPoint):Void
+	{
+		var characterArray:Array<Character> = [dad, boyfriend];
+		for (char in characterArray)
+		{
+			switch (char.curCharacter)
+			{
+				case 'gf':
+					char.setPosition(gf.x, gf.y);
+					gf.visible = false;
+					/*
+						if (isStoryMode)
+						{
+							camPos.x += 600;
+							tweenCamIn();
+					}*/
+					/*
+						case 'spirit':
+							var evilTrail = new FlxTrail(char, null, 4, 24, 0.3, 0.069);
+							evilTrail.changeValuesEnabled(false, false, false, false);
+							add(evilTrail);
+					 */
+			}
+		}
+	}
+
+	public function repositionPlayers(curStage, boyfriend:Character, dad:Character, gf:Character):Void
+	{
+		// REPOSITIONING PER STAGE
+		switch (curStage)
+		{
+			case 'apotheosis':
+				boyfriend.x += 350;
+				boyfriend.y += 100;
+				dad.x -= -350;
+				dad.y += 70;
+		}
+	}
+
+	var curLight:Int = 0;
+	var trainMoving:Bool = false;
+	var trainFrameTiming:Float = 0;
+
+	var trainCars:Int = 8;
+	var trainFinishing:Bool = false;
+	var trainCooldown:Int = 0;
+	var startedMoving:Bool = false;
+
+	public function stageUpdate(curBeat:Int, boyfriend:Boyfriend, gf:Character, dadOpponent:Character)
+	{
+		// trace('update backgrounds');
+		switch (PlayState.curStage)
+		{
+			case 'highway':
+				// trace('highway update');
+				grpLimoDancers.forEach(function(dancer:BackgroundDancer)
+				{
+					dancer.dance();
+				});
+			case 'mall':
+				upperBoppers.animation.play('bop', true);
+				bottomBoppers.animation.play('bop', true);
+				santa.animation.play('idle', true);
+
+			case 'school':
+				bgGirls.dance();
+
+			case 'philly':
+				if (!trainMoving)
+					trainCooldown += 1;
+
+				if (curBeat % 4 == 0)
+				{
+					var lastLight:FlxSprite = phillyCityLights.members[0];
+
+					phillyCityLights.forEach(function(light:FNFSprite)
+					{
+						// Take note of the previous light
+						if (light.visible == true)
+							lastLight = light;
+
+						light.visible = false;
+					});
+
+					// To prevent duplicate lights, iterate until you get a matching light
+					while (lastLight == phillyCityLights.members[curLight])
+					{
+						curLight = FlxG.random.int(0, phillyCityLights.length - 1);
+					}
+
+					phillyCityLights.members[curLight].visible = true;
+					phillyCityLights.members[curLight].alpha = 1;
+
+					FlxTween.tween(phillyCityLights.members[curLight], {alpha: 0}, Conductor.stepCrochet * .016);
+				}
+
+				if (curBeat % 8 == 4 && FlxG.random.bool(30) && !trainMoving && trainCooldown > 8)
+				{
+					trainCooldown = FlxG.random.int(-4, 0);
+					trainStart();
+				}
+		}
+	}
+
+	public function stageUpdateConstant(elapsed:Float, boyfriend:Boyfriend, gf:Character, dadOpponent:Character)
+	{
+		switch (PlayState.curStage)
+		{
+			case 'philly':
+				if (trainMoving)
+				{
+					trainFrameTiming += elapsed;
+
+					if (trainFrameTiming >= 1 / 24)
+					{
+						updateTrainPos(gf);
+						trainFrameTiming = 0;
+					}
+				}
+		}
+	}
+
+	// PHILLY STUFFS!
+	function trainStart():Void
+	{
+		trainMoving = true;
+		if (!trainSound.playing)
+			trainSound.play(true);
+	}
+
+	function updateTrainPos(gf:Character):Void
+	{
+		if (trainSound.time >= 4700)
+		{
+			startedMoving = true;
+			gf.playAnim('hairBlow');
+		}
+
+		if (startedMoving)
+		{
+			phillyTrain.x -= 400;
+
+			if (phillyTrain.x < -2000 && !trainFinishing)
+			{
+				phillyTrain.x = -1150;
+				trainCars -= 1;
+
+				if (trainCars <= 0)
+					trainFinishing = true;
+			}
+
+			if (phillyTrain.x < -4000 && trainFinishing)
+				trainReset(gf);
+		}
+	}
+
+	function trainReset(gf:Character):Void
+	{
+		gf.playAnim('hairFall');
+		phillyTrain.x = FlxG.width + 200;
+		trainMoving = false;
+		// trainSound.stop();
+		// trainSound.time = 0;
+		trainCars = 8;
+		trainFinishing = false;
+		startedMoving = false;
+	}
+
+	public function dispatchEvent(myEvent:String)
+	{
+
+	}
+
+	override function add(Object:FlxBasic):FlxBasic
+	{
+		if (Init.trueSettings.get('Disable Antialiasing') && Std.isOfType(Object, FlxSprite))
+			cast(Object, FlxSprite).antialiasing = false;
+		return super.add(Object);
+	}
+}

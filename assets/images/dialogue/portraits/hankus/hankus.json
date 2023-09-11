@@ -1,0 +1,12 @@
+{
+    "name": "hankus",
+    "expressions": {
+        "normal": "hankus idle dance"
+    },
+    "position": "left",
+    "sounds": [
+        "pixelText"
+    ],
+    "soundChance": 100,
+    "soundPath": "sounds/"
+}
